@@ -4,6 +4,8 @@
 
 RS.SCHOOL NodeJS 2026 Q1 Course Project "CRUD API for a Product Catalog"
 
+My task was to implement a simple CRUD API for a Product Catalog using an in-memory database underneath. Used Fastify as the framework.
+
 ## Stack
 
 - Node.js
@@ -65,7 +67,7 @@ Base URL: http://localhost:PORT/
 | ```PUT```    | ```/api/products/:id```  | Update a product     |
 | ```DELETE``` | ```/api/products/:id```| Delete a product     |
 
-⚠️ method ```PUT``` required all fields of the body !!!
+⚠️ method ```PUT``` requires all fields in the request body (full replacement) !!!
 
 
 ## Product Schema: 
@@ -78,7 +80,7 @@ Base URL: http://localhost:PORT/
 
 ⚠️ All fields (except id) are required when you create a new product in the database. Price must be a positive number (integer or float).
 
-⚠️ You can use the ID to retrieve information about a specific product, edit it, or delete it. You don't need to create an ID manually when creating a product in the database! The ID is automatically generated on the server and assigned to each individual product.
+⚠️ You can use ID to retrieve information about a specific product, edit it, or delete it. You don't need to create an ID manually when creating a product in the database! The ID is automatically generated on the server and assigned to each individual product.
 
 
 ## Examples of interaction with the API
@@ -93,7 +95,7 @@ In production, replace localhost with the required domain, port 4000 with the re
 
 ### Returns all the products.
 ```bash
-GET http://localhost:4000/api/products/
+GET http://localhost:4000/api/products
 ```
 Response:
 ```200 OK```: you received array of products, content: array of objects or empty array
@@ -109,7 +111,7 @@ Response:
       "name": "Sunsong Galaktion S25 12/256GB Titanium Black",
       "description": "A stunning new smartphone",
       "price": 95000,
-      "category": "Phones",
+      "category": "electronics",
       "inStock": true
     },
     {
@@ -117,9 +119,9 @@ Response:
       "name": "Horror 8 13/666GB Scary Black",
       "description": "Help!",
       "price": 13666,
-      "category": "Phones",
+      "category": "electronics",
       "inStock": true
-    },
+    }
 ]
 ```
 
@@ -128,7 +130,7 @@ Response:
 
 ### Returns a product by ID.
 ```bash
-GET http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+GET http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930
 ```
 Response:
 
@@ -145,7 +147,7 @@ Response:
     "name": "Sunsong Galaktion S25 12/256GB Titanium Black",
     "description": "A stunning new smartphone",
     "price": 95000,
-    "category": "Phones",
+    "category": "electronics",
     "inStock": true
 }
 ```
@@ -156,13 +158,13 @@ Response:
 
 ### Create a new product.
 ```bash
-POST http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+POST http://localhost:4000/api/products
 ```
 Response:
 
-```201 Created```: product found, content: object
+```201 Created```: product successfully created and received it to the client with added id, content: object
 
-```400 Bad Request```: invalid data, missing required fields, etc.
+```400 Bad Request```: validation error (invalid data, missing fields, wrong types).
 
 ##### Body example
 ```JSON
@@ -170,7 +172,7 @@ Response:
     "name": "Sunsong Galaktion S25 12/256GB Titanium Black",
     "description": "A stunning new smartphone",
     "price": 95000,
-    "category": "Phones",
+    "category": "electronics",
     "inStock": true
 }
 ```
@@ -181,7 +183,7 @@ Response:
     "name": "Sunsong Galaktion S25 12/256GB Titanium Black",
     "description": "A stunning new smartphone",
     "price": 95000,
-    "category": "Phones",
+    "category": "electronics",
     "inStock": true
 }
 ```
@@ -192,11 +194,11 @@ Response:
 
 ### Update the product by id
 ```bash
-PUT http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+PUT http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930
 ```
 Response:
 
-```200 OK```: product found and updated
+```200 OK```: product found and successfully updated, received it to the client with new data, content: object
 
 ```400 Bad Request```: invalid productId (not a UUID)
 
@@ -208,7 +210,7 @@ Response:
     "name": "Gugle Puxel 18 12/256GB Titanium Black",
     "description": "Wtf",
     "price": 55000,
-    "category": "Phones",
+    "category": "electronics",
     "inStock": false
 }
 ```
@@ -219,7 +221,7 @@ Response:
     "name": "Gugle Puxel 18 12/256GB Titanium Black",
     "description": "Wtf",
     "price": 55000,
-    "category": "Phones",
+    "category": "electronics",
     "inStock": false
 }
 ```
@@ -230,7 +232,7 @@ Response:
 
 #### Delete the product by id
 ```bash
-DELETE http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+DELETE http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930
 ```
 Response:
 

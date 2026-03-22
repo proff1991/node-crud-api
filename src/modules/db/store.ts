@@ -1,8 +1,8 @@
 import { Product } from "../models/product.model";
 
-const products = new Map<string, Product>();
+var products = new Map<string, Product>();
 
-export const productStore = {
+export var productStore = {
   getAll: (): Product[] => {
     return Array.from(products.values());
   },

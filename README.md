@@ -98,6 +98,10 @@ GET http://localhost:4000/api/products/
 Response:
 ```200 OK```: you received array of products, content: array of objects or empty array
 
+
+
+
+
 ### Returns a product by ID.
 ```bash
 GET http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
@@ -122,12 +126,18 @@ Response:
 }
 ```
 
+
+
+
+
 ### Create a new product.
 ```bash
 POST http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
+
 ```201 Created```: product found, content: object
+
 ```400 Bad Request```: invalid data, missing required fields, etc.
 
 ##### Body example
@@ -151,6 +161,10 @@ Response:
     "inStock": true
 }
 ```
+
+
+
+
 
 ### Update the product by id
 ```bash
@@ -185,6 +199,10 @@ Response:
     "inStock": false
 }
 ```
+
+
+
+
 
 #### Delete the product by id
 ```bash

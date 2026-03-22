@@ -1,12 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { productStore } from "../db/store";
 import { CreateProductDto, Product, UpdateProductDto } from "../models/product.model";
-
-
-var isValidUUID = (id: string): boolean => {
-    var uuidV4Regex = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-    return uuidV4Regex.test(id);
-}
+import { z } from "zod";
 
 class BadRequestError extends Error {
     statusCode = 400;
@@ -15,6 +10,23 @@ class BadRequestError extends Error {
 class NotFoundError extends Error {
     statusCode = 404;
 }
+
+class InvalidProductIdError extends Error {
+    statusCode = 400;
+    message = "Invalid productId";
+}
+var uuidSchema = z.uuid();
+
+var isValidUUID = (id: string) => {
+
+    var result = uuidSchema.safeParse(id);
+
+    if (!result.success) {
+        throw new InvalidProductIdError();
+    }
+
+    return id;
+};
 
 export var productService = {
     getAll: (): Product[] => {

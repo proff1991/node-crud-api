@@ -77,6 +77,7 @@ Base URL: http://localhost:PORT/
 - ```inStock``` — whether the product is in stock (boolean, required)
 
 ⚠️ All fields (except id) are required when you create a new product in the database. Price must be a positive number (integer or float).
+
 ⚠️ You can use the ID to retrieve information about a specific product, edit it, or delete it. You don't need to create an ID manually when creating a product in the database! The ID is automatically generated on the server and assigned to each individual product.
 
 
@@ -96,7 +97,6 @@ GET http://localhost:5000/api/products/
 ```
 Response:
 ```200 OK```: you received array of products, content: array of objects or empty array
-
 
 ### Returns a product by ID.
 ```bash
@@ -119,12 +119,10 @@ Response:
 }
 ```
 
-
+### Create a new product.
 ```bash
 POST http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
-Create a new product.
-
 Response:
 ```201 Created```: product found, content: object
 ```400 Bad Request```: invalid data, missing required fields, etc.
@@ -182,12 +180,10 @@ Response:
 }
 ```
 
-
+#### Delete the product by id
 ```bash
 DELETE http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
-Create a new product.
-
 Response:
 ```204 No Content```: product found and deleted, content is empty
 ```400 Bad Request```: invalid productId (not a UUID)

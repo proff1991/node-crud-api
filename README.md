@@ -97,7 +97,31 @@ GET http://localhost:4000/api/products/
 ```
 Response:
 ```200 OK```: you received array of products, content: array of objects or empty array
-
+##### Response example
+```JSON
+[]
+```
+##### Another Response example
+```JSON
+[
+    {
+      "id": "c59a68a3-ae51-492b-82cd-74fe886d3930",
+      "name": "Sunsong Galaktion S25 12/256GB Titanium Black",
+      "description": "A stunning new smartphone",
+      "price": 95000,
+      "category": "Phones",
+      "inStock": true
+    },
+    {
+      "id": "9dac4e12-23ad-44ac-88aa-4f74fc74e126",
+      "name": "Horror 8 6/666GB Scary Black",
+      "description": "Help!",
+      "price": 13666,
+      "category": "Phones",
+      "inStock": true
+    },
+]
+```
 
 
 

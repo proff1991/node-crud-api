@@ -8,7 +8,7 @@ import { handleClusterMessage, isClusterMessage } from "./modules/db/store";
 
 var BASE_PORT = getEnv().PORT;
 var numCPUs = os.availableParallelism();
-var isMulti: boolean = process.argv.includes("--multi");
+var isMulti: boolean = process.argv.includes("--multi") && !(process.argv.includes("--multi=false")) && !(process.argv.includes("--multi false"));
 
 ; (async () => {
     if (isMulti && cluster.isPrimary) {

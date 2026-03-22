@@ -9,8 +9,6 @@ export var productSchema = z.object({
   inStock: z.boolean(),
 });
 
-
-
 export var createProductSchema = z.object({
   name: z.string().min(1),
   description: z.string().min(1),

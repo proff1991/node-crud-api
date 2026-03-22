@@ -1,0 +1,36 @@
+{
+  "name": "crud-api",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/proff1991/node-crud-api#readme",
+  "bugs": {
+    "url": "https://github.com/proff1991/node-crud-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/proff1991/node-crud-api.git"
+  },
+  "license": "ISC",
+  "author": "proff1991",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test dist/**/*.test.js",
+    "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "start:dev:multi": "ts-node-dev --respawn --transpile-only src/index.ts --multi",
+    "start:multi": "npm run start:dev:multi",
+    "start:prod": "tsc && node dist/index.js",
+    "start:prod:multi": "tsc && node dist/index.js --multi"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "fastify": "^5.8.2",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}

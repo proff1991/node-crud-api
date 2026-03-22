@@ -25,8 +25,30 @@ npm install
 
 ## Environment Variables
 
-Create the .env file from the .env.example
+You need to create the .env file and set into it the PORT variable, or also you can use .env.example as main .env:
 
 ```bash
 cp .env.example .env
+```
+
+## Running the project
+
+- Development single-process mode: 
+```bash
+npm run start:dev
+```
+
+- Development multi-process mode: 
+```bash
+npm run start:multi
+```
+
+- Production single-process mode: 
+```bash
+npm run start:prod
+```
+
+- Production multi-process mode: 
+```bash
+npm run start:prod:multi
 ```

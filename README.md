@@ -58,7 +58,7 @@ cp .env.example .env
 Base URL: http://localhost:PORT/
 
 | Method | Path             | Description          |
-|--------|----------------------|----------------------|
+|--------|------------------------|------------------------|
 | ```GET```    | ```/api/products```    | Get all products     |
 | ```GET```    | ```/api/products/:id```  | Get product by ID    |
 | ```POST```   | ```/api/products```      | Create a new product |
@@ -76,16 +76,119 @@ Base URL: http://localhost:PORT/
 - ```category``` — product category (string, required, e.g. "electronics", "books", "clothing")
 - ```inStock``` — whether the product is in stock (boolean, required)
 
+⚠️ All fields (except id) are required when you create a new product in the database. Price must be a positive number (integer or float).
 ⚠️ You can use the ID to retrieve information about a specific product, edit it, or delete it. You don't need to create an ID manually when creating a product in the database! The ID is automatically generated on the server and assigned to each individual product.
 
 
-## Body example
+## Examples of interaction with the API
+
+Here are some examples:
+PORT: 4000
+DOMAIN: localhost
+PRODUCT ID: c59a68a3-ae51-492b-82cd-74fe886d3930
+
+In production, replace localhost with the required domain, port 4000 with the required port, or remove it altogether (if required). The same rules apply to ID.
+
+
+### Returns all the products.
+```bash
+GET http://localhost:5000/api/products/
+```
+Response:
+200 OK: you received array of products, content: array of objects or empty array
+
+
+### Returns a product by ID.
+```bash
+GET http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+```
+Response:
+200 OK: product found, content: object
+400 Bad Request: invalid productId (not a UUID)
+404 Not Found: product not found
+
+##### Response example
 ```JSON
 {
-    "name": "Sunsong Galaktion S25 Ultra 12/256GB Titanium Black (SN-S938B)",
-    "description": "A stunning new smartphone. Any resemblance to other models is purely coincidental.",
+    "id": "c59a68a3-ae51-492b-82cd-74fe886d3930",
+    "name": "Sunsong Galaktion S25 12/256GB Titanium Black",
+    "description": "A stunning new smartphone",
     "price": 95000,
     "category": "Phones",
     "inStock": true
 }
 ```
+
+
+```bash
+POST http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+```
+Create a new product.
+
+Response:
+201 Created – product found, content: object
+400 Bad Request – invalid data, missing required fields, etc.
+
+##### Body example
+```JSON
+{
+    "name": "Sunsong Galaktion S25 12/256GB Titanium Black",
+    "description": "A stunning new smartphone",
+    "price": 95000,
+    "category": "Phones",
+    "inStock": true
+}
+```
+##### Response example
+```JSON
+{
+    "id": "c59a68a3-ae51-492b-82cd-74fe886d3930",
+    "name": "Sunsong Galaktion S25 12/256GB Titanium Black",
+    "description": "A stunning new smartphone",
+    "price": 95000,
+    "category": "Phones",
+    "inStock": true
+}
+```
+
+### Update the product by id
+```bash
+PUT http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+```
+Response:
+200 OK – product found and updated
+400 Bad Request – invalid productId (not a UUID)
+404 Not Found – product not found
+
+##### Body example
+```JSON
+{
+    "name": "Gugle Puxel 18 12/256GB Titanium Black",
+    "description": "Wtf",
+    "price": 55000,
+    "category": "Phones",
+    "inStock": false
+}
+```
+##### Response example
+```JSON
+{
+    "id": "c59a68a3-ae51-492b-82cd-74fe886d3930",
+    "name": "Gugle Puxel 18 12/256GB Titanium Black",
+    "description": "Wtf",
+    "price": 55000,
+    "category": "Phones",
+    "inStock": false
+}
+```
+
+
+```bash
+DELETE http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+```
+Create a new product.
+
+Response:
+204 No Content – product found and deleted, content is empty
+400 Bad Request – invalid productId (not a UUID)
+404 Not Found – product not found

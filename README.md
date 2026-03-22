@@ -114,7 +114,7 @@ Response:
     },
     {
       "id": "9dac4e12-23ad-44ac-88aa-4f74fc74e126",
-      "name": "Horror 8 6/666GB Scary Black",
+      "name": "Horror 8 13/666GB Scary Black",
       "description": "Help!",
       "price": 13666,
       "category": "Phones",

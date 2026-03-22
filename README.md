@@ -93,14 +93,14 @@ In production, replace localhost with the required domain, port 4000 with the re
 
 ### Returns all the products.
 ```bash
-GET http://localhost:5000/api/products/
+GET http://localhost:4000/api/products/
 ```
 Response:
 ```200 OK```: you received array of products, content: array of objects or empty array
 
 ### Returns a product by ID.
 ```bash
-GET http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+GET http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
 
@@ -124,7 +124,7 @@ Response:
 
 ### Create a new product.
 ```bash
-POST http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+POST http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
 ```201 Created```: product found, content: object
@@ -154,7 +154,7 @@ Response:
 
 ### Update the product by id
 ```bash
-PUT http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+PUT http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
 
@@ -188,7 +188,7 @@ Response:
 
 #### Delete the product by id
 ```bash
-DELETE http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
+DELETE http://localhost:4000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
 

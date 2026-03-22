@@ -15,7 +15,8 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts"
+    "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "start:multi": "ts-node-dev --respawn --transpile-only src/index.ts --multi"
   },
   "dependencies": {
     "dotenv": "^17.3.1",

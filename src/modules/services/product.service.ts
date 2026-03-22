@@ -3,6 +3,7 @@ import { productStore } from "../db/store";
 import { CreateProductDto, Product, UpdateProductDto } from "../models/product.model";
 import { z } from "zod";
 
+
 class BadRequestError extends Error {
     statusCode = 400;
 }
@@ -11,20 +12,13 @@ class NotFoundError extends Error {
     statusCode = 404;
 }
 
-class InvalidProductIdError extends Error {
-    statusCode = 400;
-    message = "Invalid productId";
-}
 var uuidSchema = z.uuid();
 
 var isValidUUID = (id: string) => {
-
     var result = uuidSchema.safeParse(id);
-
     if (!result.success) {
-        throw new InvalidProductIdError();
+        throw new BadRequestError("Invalid productId (not UUID)");
     }
-
     return id;
 };
 
@@ -34,9 +28,8 @@ export var productService = {
     },
 
     getById: (id: string): Product => {
-        if (!isValidUUID(id)) {
-            throw new BadRequestError("Invalid productId (not UUID)");
-        }
+
+        isValidUUID(id);
 
         var product = productStore.getById(id);
 
@@ -59,9 +52,7 @@ export var productService = {
     },
 
     update: (id: string, data: UpdateProductDto): Product => {
-        if (!isValidUUID(id)) {
-            throw new BadRequestError("Invalid productId (not UUID)");
-        }
+        isValidUUID(id);
 
         var existing = productStore.getById(id);
 
@@ -80,12 +71,11 @@ export var productService = {
     },
 
     delete: (id: string): void => {
-        if (!isValidUUID(id)) {
-            throw new BadRequestError("Invalid productId (not UUID)");
-        }
+        isValidUUID(id);
         var deleted = productStore.delete(id);
         if (!deleted) {
             throw new NotFoundError("Product not found");
         }
     },
 };
+

@@ -15,6 +15,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "start:dev:multi": "ts-node-dev --respawn --transpile-only src/index.ts --multi",
     "start:multi": "npm run start:multi",

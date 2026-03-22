@@ -86,9 +86,11 @@ Base URL: http://localhost:PORT/
 ## Examples of interaction with the API
 
 Here are some examples:
+```
 PORT: 4000
 DOMAIN: localhost
 PRODUCT ID: c59a68a3-ae51-492b-82cd-74fe886d3930
+```
 
 In production, replace localhost with the required domain, port 4000 with the required port, or remove it altogether (if required). The same rules apply to ID.
 

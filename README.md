@@ -103,8 +103,11 @@ Response:
 GET http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
+
 ```200 OK```: product found, content: object
+
 ```400 Bad Request```: invalid productId (not a UUID)
+
 ```404 Not Found```: product not found
 
 ##### Response example
@@ -154,8 +157,11 @@ Response:
 PUT http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
+
 ```200 OK```: product found and updated
+
 ```400 Bad Request```: invalid productId (not a UUID)
+
 ```404 Not Found```: product not found
 
 ##### Body example
@@ -185,6 +191,9 @@ Response:
 DELETE http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
+
 ```204 No Content```: product found and deleted, content is empty
+
 ```400 Bad Request```: invalid productId (not a UUID)
+
 ```404 Not Found```: product not found

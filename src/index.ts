@@ -1,5 +1,5 @@
 import { getEnv } from "./modules/config/env";
-import { makeFastifyApp } from './modules/app';
+import { makeFastifyApp } from "./modules/app";
 import { ZodError } from "zod";
 
 (async () => {

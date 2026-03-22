@@ -34,21 +34,21 @@ cp .env.example .env
 ## Running the project
 
 - Development single-process mode: 
-```bash
-npm run start:dev
-```
+   ```bash
+   npm run start:dev
+   ```
 
 - Development multi-process mode: 
-```bash
-npm run start:multi
-```
+   ```bash
+   npm run start:multi
+   ```
 
 - Production single-process mode: 
-```bash
-npm run start:prod
-```
+   ```bash
+   npm run start:prod
+   ```
 
 - Production multi-process mode: 
-```bash
-npm run start:prod:multi
-```
+   ```bash
+   npm run start:prod:multi
+   ```

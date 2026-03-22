@@ -95,7 +95,7 @@ In production, replace localhost with the required domain, port 4000 with the re
 GET http://localhost:5000/api/products/
 ```
 Response:
-200 OK: you received array of products, content: array of objects or empty array
+```200 OK```: you received array of products, content: array of objects or empty array
 
 
 ### Returns a product by ID.
@@ -103,9 +103,9 @@ Response:
 GET http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
-200 OK: product found, content: object
-400 Bad Request: invalid productId (not a UUID)
-404 Not Found: product not found
+```200 OK```: product found, content: object
+```400 Bad Request```: invalid productId (not a UUID)
+```404 Not Found```: product not found
 
 ##### Response example
 ```JSON
@@ -126,8 +126,8 @@ POST http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 Create a new product.
 
 Response:
-201 Created – product found, content: object
-400 Bad Request – invalid data, missing required fields, etc.
+```201 Created```: product found, content: object
+```400 Bad Request```: invalid data, missing required fields, etc.
 
 ##### Body example
 ```JSON
@@ -156,9 +156,9 @@ Response:
 PUT http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 ```
 Response:
-200 OK – product found and updated
-400 Bad Request – invalid productId (not a UUID)
-404 Not Found – product not found
+```200 OK```: product found and updated
+```400 Bad Request```: invalid productId (not a UUID)
+```404 Not Found```: product not found
 
 ##### Body example
 ```JSON
@@ -189,6 +189,6 @@ DELETE http://localhost:5000/api/products/c59a68a3-ae51-492b-82cd-74fe886d3930/
 Create a new product.
 
 Response:
-204 No Content – product found and deleted, content is empty
-400 Bad Request – invalid productId (not a UUID)
-404 Not Found – product not found
+```204 No Content```: product found and deleted, content is empty
+```400 Bad Request```: invalid productId (not a UUID)
+```404 Not Found```: product not found

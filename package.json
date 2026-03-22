@@ -16,9 +16,10 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "test": "npm run build && node --test dist/**/*.test.js",
     "start:dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "start:dev:multi": "ts-node-dev --respawn --transpile-only src/index.ts --multi",
-    "start:multi": "npm run start:multi",
+    "start:multi": "npm run start:dev:multi",
     "start:prod": "tsc && node dist/index.js",
     "start:prod:multi": "tsc && node dist/index.js --multi"
   },
